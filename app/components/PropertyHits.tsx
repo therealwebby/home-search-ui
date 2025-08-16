@@ -1,10 +1,11 @@
 import {useHits} from "react-instantsearch";
-import PropertyHit from "@/app/components/PropertyHit";
+import { PropertyData, PropertyHit } from "@/app/components/PropertyHit";
 
 export default function PropertyHits() {
-    const {items} = useHits();
+    const {items} = useHits<PropertyData>();
+
 
     return (
-        items.map(hit => <PropertyHit hit={hit} key={hit.objectID}></PropertyHit>)
+        items.map((hit) => <PropertyHit hit={hit} key={hit.objectID}></PropertyHit>)
     )
 }

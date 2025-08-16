@@ -2,9 +2,7 @@
 
 import {algoliasearch} from "algoliasearch";
 import { createNullCache } from '@algolia/client-common';
-
-
-import {InstantSearch, Hits, Index} from "react-instantsearch";
+import {InstantSearch} from "react-instantsearch";
 import PropertyHits from "@/app/components/PropertyHits";
 
 

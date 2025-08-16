@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
-import { useSearchBox } from 'react-instantsearch';
-import { useRouter } from 'next/navigation';
+import { useState} from "react";
+import { UseHitsProps } from "react-instantsearch";
 
-type PropertyHit = {
+export type PropertyData = {
     street: string,
     id: string,
     areaName: string,
@@ -23,10 +22,8 @@ type PropertyHit = {
     objectID: string
 }
 
-export default function PropertyHit({hit}: { hit: PropertyHit }) {
+export function PropertyHit({ hit }: { hit: PropertyData }) {
     const [reviewStatus, setReviewStatus] = useState(hit.reviewStatus);
-    const {refine} = useSearchBox();
-    const router = useRouter();
 
     const handleReviewClick = () => {
         fetch("https://r01696qxa5.execute-api.us-east-1.amazonaws.com/default/mark-reviewed", {
