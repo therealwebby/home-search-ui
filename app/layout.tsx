@@ -50,7 +50,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <script src="/register-sw.js"></script>
+        <script src="/register-sw.js" async></script>
       </body>
     </html>
   );
