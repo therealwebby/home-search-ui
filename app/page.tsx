@@ -2,7 +2,7 @@
 
 import {algoliasearch} from "algoliasearch";
 import { createNullCache } from '@algolia/client-common';
-import {InstantSearch} from "react-instantsearch";
+import {Configure, InstantSearch, Pagination} from "react-instantsearch";
 import PropertyHits from "@/app/components/PropertyHits";
 
 
@@ -17,6 +17,18 @@ export default function Home() {
       <main className="font-sans grid grid-rows-4 min-h-screen p-8 pb-20 gap-8 sm:p-20 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           <InstantSearch searchClient={client} indexName="listings">
               <PropertyHits />
+              <div className="flex justify-center items-center py-4 col-span-4">
+                  <Pagination
+                      classNames={{
+                          root: 'flex items-center space-x-1',
+                          list: 'flex items-center space-x-1',
+                          item: '',
+                          link: 'px-3 py-2 border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors',
+                          selectedItem: 'font-bold text-green-950',
+                          disabledItem: 'opacity-15 cursor-not-allowed',
+                      }}
+                  />
+               </div>
           </InstantSearch>
       </main>
   );

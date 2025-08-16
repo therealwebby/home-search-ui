@@ -1,5 +1,4 @@
 import { useState} from "react";
-import { UseHitsProps } from "react-instantsearch";
 
 export type PropertyData = {
     street: string,
@@ -62,7 +61,7 @@ export function PropertyHit({ hit }: { hit: PropertyData }) {
     }
 
     return (
-        <div className="col-span-1">
+        <div className={`col-span-1 ${reviewStatus==='Rejected' && 'opacity-20'}`}>
             <a href={`https://${hit.url}`} target="_blank" rel="noreferrer" className="block">
                 <div className="w-full h-62 overflow-hidden content-center relative">
                     <img src={`https://photos.zillowstatic.com/fp/${hit.leadMedia}`} alt={hit.street}/>
