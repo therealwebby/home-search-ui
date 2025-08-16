@@ -15,16 +15,16 @@ const client = algoliasearch(
     })
 export default function Home() {
   return (
-      <main className="font-sans grid grid-rows-[2rem_1fr_1fr_auto] min-h-screen p-8 pb-20 gap-8 sm:p-20 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <main className="font-sans grid grid-rows-[auto_1fr_auto] min-h-screen p-8 pb-20 gap-8 sm:p-20 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           <InstantSearch searchClient={client} indexName="listings" >
-              <div className="col-span-4">
+              <div className="col-span-full">
                   <AllRefinement />
                   <Refinement value="New" />
                   <Refinement value="Reviewed" />
                   <Refinement value="Rejected" />
               </div>
               <PropertyHits />
-              <div className="flex justify-center items-center py-4 col-span-4">
+              <div className="flex justify-center items-center py-4 col-span-full">
                   <Pagination
                       classNames={{
                           root: 'flex items-center space-x-1',

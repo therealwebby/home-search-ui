@@ -13,7 +13,7 @@ export function Refinement ({value}: {value: string}) {
     };
 
     return (
-        <div className={`inline-block rounded-4xl p-1 pr-4 pl-4 mr-3 ${!isRefined ? 'bg-gray-300' : 'bg-cyan-800 text-white'}`}>
+        <div className={`inline-block rounded-4xl p-1 pr-4 pl-4 mr-3 mb-4 ${!isRefined ? 'bg-gray-300' : 'bg-cyan-800 text-white'}`}>
             <button 
                 onClick={handleToggle}
                 className={`toggle-btn ${isRefined ? 'active' : ''}`}
