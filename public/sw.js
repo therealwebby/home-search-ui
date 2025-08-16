@@ -1,4 +1,4 @@
-const CACHE_NAME = 'rental-search-v1';
+const CACHE_NAME = 'rental-search-v2';
 const urlsToCache = [
   '/',
   '/manifest.json',
