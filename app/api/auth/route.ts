@@ -29,6 +29,7 @@ export async function POST(request: NextRequest) {
       { status: 401 }
     );
   } catch (error) {
+      console.error('Error during authentication:', error);
     return NextResponse.json(
       { error: 'Invalid request' },
       { status: 400 }

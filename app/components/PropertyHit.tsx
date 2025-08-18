@@ -16,7 +16,7 @@ export type PropertyData = {
         lat: string,
         lng: string
     },
-    reviewStatus: "New" | "Reviewed" | "Rejected",
+    reviewStatus: "New" | "Reviewed" | "Rejected" | "Requested",
     indexUpdatedAt: number,
     objectID: string
 }
@@ -60,6 +60,24 @@ export function PropertyHit({ hit }: { hit: PropertyData }) {
         }).catch(error => console.log(error))
     }
 
+    const handleRequestedClick = () => {
+        fetch("https://r01696qxa5.execute-api.us-east-1.amazonaws.com/default/mark-reviewed", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                objectID: hit.objectID,
+                type: "requested"
+            })
+        }).then(() => {
+            setReviewStatus( "Requested")
+            setTimeout(() => {
+                window.location.reload()
+            }, 500)
+        }).catch(error => console.log(error))
+    }
+
     return (
         <div className={`col-span-1 ${reviewStatus==='Rejected' && 'opacity-20'}`}>
             <a href={`https://${hit.url}`} target="_blank" rel="noreferrer" className="block">
@@ -87,16 +105,25 @@ export function PropertyHit({ hit }: { hit: PropertyData }) {
                     <div className="flex flex-row mt-3">
                         <button
                             onClick={handleReviewClick}
-                            className="border-2 border-green-950 text-green-950 text-s p-1 mr-2 w-full max-w-3/6">Accept
+                            className="border-2 border-blue-800 text-blue-800 text-s p-1 mr-2 w-full max-w-3/6 cursor-pointer">Accept
                         </button>
-                        <button onClick={handleRejectClick} className="border-2 border-red-700 text-red-700 text-s p-1 w-full max-w-3/6">Reject</button>
+                        <button onClick={handleRejectClick} className="border-2 border-red-700 text-red-700 text-s p-1 w-full max-w-3/6 cursor-pointer">Reject</button>
                     </div>
                 )
             }
             {
                 reviewStatus === "Reviewed" && (
-                    <div className="flex flex-row mt-3 max-w-3/6">
-                        <button onClick={handleRejectClick} className="border-2 border-red-700 text-red-700 text-s p-1 w-full max-w-3/6">Reject</button>
+                    <div className="flex flex-row mt-3">
+                        <button onClick={handleRequestedClick} className="border-2 border-green-700 text-green-700 text-s mr-2 p-1 w-full max-w-3/6 cursor-pointer">Request</button>
+                        <button onClick={handleRejectClick} className="border-2 border-red-700 text-red-700 text-s p-1  w-full max-w-3/6 cursor-pointer">Reject</button>
+                    </div>
+                )
+            }
+            {
+                reviewStatus === "Requested" && (
+                    <div className="flex flex-row mt-3">
+                        <button onClick={handleRejectClick} className="bg-green-700 text-white text-s p-1 w-full mr-2 max-w-4/6 cursor-pointer">Requested</button>
+                        <button onClick={handleRejectClick} className="border-2 border-red-700 text-red-700 text-s p-1 w-full max-w-2/6 cursor-pointer">Reject</button>
                     </div>
                 )
             }

@@ -30,7 +30,8 @@ export default function Home() {
         setError('Invalid credentials');
       }
 
-    } catch (err) {
+    } catch (error) {
+        console.error('Error during login:', error);
       setError('Login failed');
     } finally {
       setLoading(false);
