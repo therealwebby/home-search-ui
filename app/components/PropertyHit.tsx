@@ -105,25 +105,33 @@ export function PropertyHit({ hit }: { hit: PropertyData }) {
                     <div className="flex flex-row mt-3">
                         <button
                             onClick={handleReviewClick}
-                            className="border-2 border-blue-800 text-blue-800 text-s p-1 mr-2 w-full max-w-3/6 cursor-pointer">Accept
+                            className="bg-blue-800 text-white text-s p-1 mr-2 w-full max-w-3/6 cursor-pointer">Accept
                         </button>
-                        <button onClick={handleRejectClick} className="border-2 border-red-700 text-red-700 text-s p-1 w-full max-w-3/6 cursor-pointer">Reject</button>
+                        <button onClick={handleRejectClick} className="bg-red-700 text-white text-s p-1 w-full max-w-3/6 cursor-pointer">Reject</button>
                     </div>
                 )
             }
             {
                 reviewStatus === "Reviewed" && (
                     <div className="flex flex-row mt-3">
-                        <button onClick={handleRequestedClick} className="border-2 border-green-700 text-green-700 text-s mr-2 p-1 w-full max-w-3/6 cursor-pointer">Request</button>
-                        <button onClick={handleRejectClick} className="border-2 border-red-700 text-red-700 text-s p-1  w-full max-w-3/6 cursor-pointer">Reject</button>
+                        <button onClick={handleRequestedClick} className="bg-green-700 text-white text-s mr-2 p-1 w-full max-w-3/6 cursor-pointer">Request</button>
+                        <button onClick={handleRejectClick} className="bg-red-700 text-white text-s p-1  w-full max-w-3/6 cursor-pointer">Reject</button>
                     </div>
                 )
             }
             {
                 reviewStatus === "Requested" && (
                     <div className="flex flex-row mt-3">
-                        <button onClick={handleRejectClick} className="bg-green-700 text-white text-s p-1 w-full mr-2 max-w-4/6 cursor-pointer">Requested</button>
-                        <button onClick={handleRejectClick} className="border-2 border-red-700 text-red-700 text-s p-1 w-full max-w-2/6 cursor-pointer">Reject</button>
+                        <button className="border-2 border-green-700 text-green-700 text-s p-1 w-full mr-2 max-w-4/6 cursor-pointer">Requested</button>
+                        <button onClick={handleRejectClick} className="bg-red-700 text-white text-s p-1 w-full max-w-2/6 cursor-pointer">Reject</button>
+                    </div>
+                )
+            }
+
+            {
+                reviewStatus === "Rejected" && (
+                    <div className="flex flex-row mt-3">
+                        <button onClick={handleReviewClick} className="border-2 border-black text-black text-s p-1 w-full cursor-pointer">Emma Changed Mind</button>
                     </div>
                 )
             }
