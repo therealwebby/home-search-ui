@@ -22,6 +22,7 @@ export default function SearchPage() {
                     <AllRefinement />
                     <Refinement value="New" />
                     <Refinement value="Reviewed" />
+                    <Refinement value="Requested" />
                     <Refinement value="Rejected" />
                 </div>
                 <PropertyHits />
